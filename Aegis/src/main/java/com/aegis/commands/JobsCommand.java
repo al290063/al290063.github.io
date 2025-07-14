@@ -29,6 +29,12 @@ public class JobsCommand implements CommandExecutor {
             player.sendMessage("Unido al trabajo " + args[1]);
             return true;
         }
+
+        if (args.length == 0) {
+            jobs.openMenu(player);
+            return true;
+        }
+
         player.sendMessage("Tu trabajo actual: " + jobs.getJob(player));
         return true;
     }

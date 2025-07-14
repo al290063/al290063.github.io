@@ -42,6 +42,12 @@ public class MissionsCommand implements CommandExecutor {
             player.sendMessage(sb.toString());
             return true;
         }
+
+        if (args.length == 0) {
+            missions.openMenu(player);
+            return true;
+        }
+
         player.sendMessage("Uso: /missions [list|claim <id>]");
         return true;
     }

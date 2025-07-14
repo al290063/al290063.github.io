@@ -27,6 +27,9 @@ public class AegisPlugin extends JavaPlugin {
         missionsManager = new MissionsManager();
         shopManager = new ShopManager(this);
         Bukkit.getPluginManager().registerEvents(shopManager, this);
+        Bukkit.getPluginManager().registerEvents(economyManager, this);
+        Bukkit.getPluginManager().registerEvents(jobsManager, this);
+        Bukkit.getPluginManager().registerEvents(missionsManager, this);
 
         getCommand("eco").setExecutor(new EcoCommand(this));
         getCommand("jobs").setExecutor(new JobsCommand(this));

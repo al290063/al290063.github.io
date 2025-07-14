@@ -20,7 +20,11 @@ public class EcoCommand implements CommandExecutor {
             sender.sendMessage("Solo jugadores.");
             return true;
         }
-        if (args.length == 0 || args[0].equalsIgnoreCase("balance")) {
+        if (args.length == 0) {
+            economy.openMenu(player);
+            return true;
+        }
+        if (args[0].equalsIgnoreCase("balance")) {
             player.sendMessage("Balance: " + economy.getBalance(player));
             return true;
         }
