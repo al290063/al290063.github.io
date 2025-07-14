@@ -20,6 +20,10 @@ public class JobsCommand implements CommandExecutor {
             sender.sendMessage("Solo jugadores.");
             return true;
         }
+        if (args.length == 1 && args[0].equalsIgnoreCase("list")) {
+            player.sendMessage("Trabajos disponibles: " + String.join(", ", jobs.getAvailableJobs()));
+            return true;
+        }
         if (args.length == 2 && args[0].equalsIgnoreCase("join")) {
             jobs.joinJob(player, args[1]);
             player.sendMessage("Unido al trabajo " + args[1]);

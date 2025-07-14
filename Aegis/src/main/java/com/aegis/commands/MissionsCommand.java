@@ -34,7 +34,15 @@ public class MissionsCommand implements CommandExecutor {
             }
             return true;
         }
-        player.sendMessage("Uso: /missions claim <id>");
+        if (args.length == 1 && args[0].equalsIgnoreCase("list")) {
+            StringBuilder sb = new StringBuilder("Misiones 1-10:\n");
+            for (int i = 1; i <= 10; i++) {
+                sb.append(i).append(". ").append(missions.getMissionName(i)).append("\n");
+            }
+            player.sendMessage(sb.toString());
+            return true;
+        }
+        player.sendMessage("Uso: /missions [list|claim <id>]");
         return true;
     }
 }

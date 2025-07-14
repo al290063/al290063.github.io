@@ -47,7 +47,27 @@ public class EcoCommand implements CommandExecutor {
             }
             return true;
         }
-        player.sendMessage("/eco [balance|deposit|withdraw]");
+        if (args[0].equalsIgnoreCase("pay") && args.length == 3) {
+            Player target = player.getServer().getPlayer(args[1]);
+            if (target == null) {
+                player.sendMessage("Jugador no encontrado.");
+                return true;
+            }
+            try {
+                double amount = Double.parseDouble(args[2]);
+                if (economy.withdraw(player, amount)) {
+                    economy.deposit(target, amount);
+                    player.sendMessage("Pagaste " + amount + " a " + target.getName());
+                    target.sendMessage(player.getName() + " te pagó " + amount);
+                } else {
+                    player.sendMessage("Fondos insuficientes.");
+                }
+            } catch (NumberFormatException e) {
+                player.sendMessage("Cantidad inválida");
+            }
+            return true;
+        }
+        player.sendMessage("/eco [balance|deposit|withdraw|pay]");
         return true;
     }
 }

@@ -1,0 +1,5 @@
+starting-balance: 1000.0
+shop-items:
+  DIAMOND: 500
+  GOLD_INGOT: 200
+  IRON_INGOT: 100

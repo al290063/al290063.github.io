@@ -9,6 +9,7 @@ import com.aegis.jobs.JobsManager;
 import com.aegis.missions.MissionsManager;
 import com.aegis.shop.ShopManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.Bukkit;
 
 public class AegisPlugin extends JavaPlugin {
     private static AegisPlugin instance;
@@ -21,10 +22,11 @@ public class AegisPlugin extends JavaPlugin {
     public void onEnable() {
         instance = this;
         saveDefaultConfig();
-        economyManager = new EconomyManager();
+        economyManager = new EconomyManager(getConfig().getDouble("starting-balance", 0));
         jobsManager = new JobsManager();
         missionsManager = new MissionsManager();
-        shopManager = new ShopManager();
+        shopManager = new ShopManager(this);
+        Bukkit.getPluginManager().registerEvents(shopManager, this);
 
         getCommand("eco").setExecutor(new EcoCommand(this));
         getCommand("jobs").setExecutor(new JobsCommand(this));

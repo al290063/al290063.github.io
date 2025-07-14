@@ -7,13 +7,13 @@ description: Plugin de economía, tiendas, trabajos y misiones
 commands:
   eco:
     description: Comandos de economía
-    usage: /eco
+    usage: /eco [balance|deposit|withdraw|pay]
   jobs:
     description: Gestión de trabajos
-    usage: /jobs
+    usage: /jobs [list|join]
   missions:
     description: Gestión de misiones
-    usage: /missions
+    usage: /missions [list|claim]
   shop:
     description: Abrir tienda de Aegis
     usage: /shop
